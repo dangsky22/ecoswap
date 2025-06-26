@@ -1,19 +1,238 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= title %></title>
-  <link rel="stylesheet" href="/css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title || 'EcoSwap' %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        eco: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-gray-100">
-  <%- include('../partials/header') %>
+<body class="bg-gray-50 font-sans antialiased">
+    <!-- Navigation -->
+    <nav class="bg-green-600 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo and Brand -->
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center text-white font-bold text-xl">
+                        <i class="fas fa-recycle mr-2 text-2xl"></i>
+                        EcoSwap
+                    </a>
+                </div>
 
-  <main class="container mx-auto py-8">
-    <%- body %>
-  </main>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="flex items-center space-x-6">
+                        <a href="/" class="text-white hover:text-green-200 transition-colors duration-200">
+                            <i class="fas fa-home mr-1"></i>Beranda
+                        </a>
+                        <% if (typeof user !== 'undefined' && user) { %>
+                            <a href="/dashboard" class="text-white hover:text-green-200 transition-colors duration-200">
+                                <i class="fas fa-tachometer-alt mr-1"></i>Dashboard
+                            </a>
+                            <div class="relative group">
+                                <button class="text-white hover:text-green-200 transition-colors duration-200 flex items-center">
+                                    <i class="fas fa-user mr-1"></i>
+                                    <%= user.name %>
+                                    <i class="fas fa-chevron-down ml-1 text-sm"></i>
+                                </button>
+                                <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                                    <a href="/profile" class="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-t-lg">
+                                        <i class="fas fa-user mr-2"></i>Profil
+                                    </a>
+                                    <a href="/settings" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">
+                                        <i class="fas fa-cog mr-2"></i>Pengaturan
+                                    </a>
+                                    <hr class="my-1">
+                                    <a href="/auth/logout" class="block px-4 py-2 text-red-600 hover:bg-red-50 rounded-b-lg">
+                                        <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                                    </a>
+                                </div>
+                            </div>
+                        <% } else { %>
+                            <a href="/login" class="text-white hover:text-green-200 transition-colors duration-200">
+                                <i class="fas fa-sign-in-alt mr-1"></i>Masuk
+                            </a>
+                            <a href="/register" class="bg-white text-green-600 px-4 py-2 rounded-lg hover:bg-green-50 transition-colors duration-200 font-medium">
+                                <i class="fas fa-user-plus mr-1"></i>Daftar
+                            </a>
+                        <% } %>
+                    </div>
+                </div>
 
-  <%- include('../partials/footer') %>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white hover:text-green-200 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 border-t border-green-500">
+                    <a href="/" class="block px-3 py-2 text-white hover:text-green-200 transition-colors duration-200">
+                        <i class="fas fa-home mr-2"></i>Beranda
+                    </a>
+                    <% if (typeof user !== 'undefined' && user) { %>
+                        <a href="/dashboard" class="block px-3 py-2 text-white hover:text-green-200 transition-colors duration-200">
+                            <i class="fas fa-tachometer-alt mr-2"></i>Dashboard
+                        </a>
+                        <a href="/profile" class="block px-3 py-2 text-white hover:text-green-200 transition-colors duration-200">
+                            <i class="fas fa-user mr-2"></i>Profil
+                        </a>
+                        <a href="/settings" class="block px-3 py-2 text-white hover:text-green-200 transition-colors duration-200">
+                            <i class="fas fa-cog mr-2"></i>Pengaturan
+                        </a>
+                        <a href="/auth/logout" class="block px-3 py-2 text-red-200 hover:text-red-100 transition-colors duration-200">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                        </a>
+                    <% } else { %>
+                        <a href="/login" class="block px-3 py-2 text-white hover:text-green-200 transition-colors duration-200">
+                            <i class="fas fa-sign-in-alt mr-2"></i>Masuk
+                        </a>
+                        <a href="/register" class="block px-3 py-2 text-white hover:text-green-200 transition-colors duration-200">
+                            <i class="fas fa-user-plus mr-2"></i>Daftar
+                        </a>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="min-h-screen">
+        <%- body %>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-recycle text-2xl text-green-400 mr-2"></i>
+                        <span class="text-xl font-bold">EcoSwap</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Platform pertukaran sampah yang menghubungkan produsen sampah dengan pengelola limbah untuk menciptakan ekonomi sirkular yang berkelanjutan.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-green-400 hover:text-green-300 transition-colors duration-200">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-green-400 hover:text-green-300 transition-colors duration-200">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-green-400 hover:text-green-300 transition-colors duration-200">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-green-400 hover:text-green-300 transition-colors duration-200">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Tautan</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-300 hover:text-white transition-colors duration-200">Beranda</a></li>
+                        <li><a href="/about" class="text-gray-300 hover:text-white transition-colors duration-200">Tentang Kami</a></li>
+                        <li><a href="/how-it-works" class="text-gray-300 hover:text-white transition-colors duration-200">Cara Kerja</a></li>
+                        <li><a href="/contact" class="text-gray-300 hover:text-white transition-colors duration-200">Kontak</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Dukungan</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/help" class="text-gray-300 hover:text-white transition-colors duration-200">Bantuan</a></li>
+                        <li><a href="/faq" class="text-gray-300 hover:text-white transition-colors duration-200">FAQ</a></li>
+                        <li><a href="/privacy" class="text-gray-300 hover:text-white transition-colors duration-200">Kebijakan Privasi</a></li>
+                        <li><a href="/terms" class="text-gray-300 hover:text-white transition-colors duration-200">Syarat & Ketentuan</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-300">
+                    &copy; 2024 EcoSwap. Semua hak dilindungi. Dibuat dengan <i class="fas fa-heart text-red-500"></i> untuk bumi yang lebih hijau.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+        
+        // Logout function
+        function logout() {
+            fetch('/auth/logout', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }).then(() => {
+                localStorage.removeItem('token');
+                window.location.href = '/';
+            }).catch(error => {
+                console.error('Logout error:', error);
+                window.location.href = '/auth/logout';
+            });
+        }
+        
+        // Auto-hide alerts
+        setTimeout(() => {
+            const alerts = document.querySelectorAll('[data-auto-hide]');
+            alerts.forEach(alert => {
+                alert.style.transition = 'opacity 0.5s ease-out';
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            });
+        }, 5000);
+    </script>
 </body>
 </html>

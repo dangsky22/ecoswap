@@ -1,34 +1,63 @@
 import { Router } from 'express';
-import { login, generateJWT } from '../controllers/auth.controller.js';
+import { login, register } from '../controllers/auth.controller.js';
 import passport from 'passport';
+import '../config/passport.js'; // Ensure passport config is loaded
 
 const router = Router();
 
-// Local login
+// Local authentication
+router.post('/register', register);
 router.post('/login', login);
 
-// Google OAuth
-router.get('/google', passport.authenticate('google', { 
-  scope: ['profile', 'email'],
-  prompt: 'select_account' // Forces account selection
-}));
-
-// Google OAuth callback
-router.get('/google/callback', 
-  passport.authenticate('google', { 
-    failureRedirect: '/login',
-    session: false 
-  }),
-  (req, res) => {
-    try {
-      const token = generateJWT(req.user);
-      const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
-      res.redirect(`${frontendUrl}/auth-success?token=${token}`);
-    } catch (error) {
-      console.error('Error generating token:', error);
-      res.redirect('/login?error=auth_failed');
-    }
-  }
+// Google OAuth routes
+router.get('/google', (req, res, next) => {
+  console.log('🚀 Google OAuth route accessed');
+  next();
+}, passport.authenticate('google', { 
+    scope: ['profile', 'email'],
+    prompt: 'select_account'
+  })
 );
+
+router.get('/google/callback', (req, res, next) => {
+  console.log('🔄 Google OAuth callback accessed');
+  next();
+}, passport.authenticate('google', { 
+    failureRedirect: '/login?error=oauth_failed',
+    successRedirect: '/dashboard?success=oauth_login'
+  })
+);
+
+// Logout
+router.post('/logout', (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      console.error('Logout error:', err);
+      return res.status(500).json({ error: 'Logout failed' });
+    }
+    req.session.destroy((err) => {
+      if (err) {
+        console.error('Session destroy error:', err);
+      }
+      res.clearCookie('connect.sid');
+      res.json({ message: 'Logout berhasil' });
+    });
+  });
+});
+
+router.get('/logout', (req, res) => {
+  req.logout((err) => {
+    if (err) {
+      console.error('Logout error:', err);
+    }
+    req.session.destroy((err) => {
+      if (err) {
+        console.error('Session destroy error:', err);
+      }
+      res.clearCookie('connect.sid');
+      res.redirect('/login?success=logout');
+    });
+  });
+});
 
 export default router;

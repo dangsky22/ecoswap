@@ -1,0 +1,216 @@
+<div class="min-h-screen bg-gray-50">
+    <!-- Welcome Section -->
+    <div class="bg-gradient-to-r from-green-600 to-emerald-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-3xl font-bold flex items-center">
+                        <i class="fas fa-tachometer-alt mr-3"></i>
+                        Selamat datang, <%= user.name %>!
+                    </h1>
+                    <p class="text-green-100 mt-2 flex items-center">
+                        <i class="fas fa-user-tag mr-2"></i>
+                        <% if (user.role === 'waste_producer') { %>
+                            Produsen Sampah
+                        <% } else if (user.role === 'waste_manager') { %>
+                            Pengelola Limbah
+                        <% } else { %>
+                            User
+                        <% } %>
+                    </p>
+                </div>
+                <div class="hidden md:block">
+                    <i class="fas fa-recycle text-8xl opacity-20"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Success Alert -->
+        <% if (success) { %>
+            <div class="mb-8">
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                        <div class="text-green-800">
+                            <% if (success === 'login') { %>
+                                <strong>Selamat datang!</strong> Anda berhasil login ke EcoSwap.
+                            <% } else if (success === 'register') { %>
+                                <strong>Selamat!</strong> Akun Anda berhasil dibuat. Selamat datang di EcoSwap!
+                            <% } else if (success === 'oauth_login') { %>
+                                <strong>Berhasil!</strong> Login menggunakan Google OAuth berhasil!
+                            <% } %>
+                        </div>
+                        <button type="button" class="ml-auto text-green-400 hover:text-green-600" onclick="this.parentElement.parentElement.parentElement.remove()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+
+        <!-- Quick Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-xl shadow-sm p-6 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg mb-4">
+                    <i class="fas fa-recycle text-2xl text-green-600"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-green-600">0</h3>
+                <p class="text-gray-600 font-medium">Total Pertukaran</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-sm p-6 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-lg mb-4">
+                    <i class="fas fa-leaf text-2xl text-blue-600"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-blue-600">0 kg</h3>
+                <p class="text-gray-600 font-medium">CO₂ Tersimpan</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-sm p-6 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-yellow-100 rounded-lg mb-4">
+                    <i class="fas fa-coins text-2xl text-yellow-600"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-yellow-600">0</h3>
+                <p class="text-gray-600 font-medium">EcoPoints</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-sm p-6 text-center">
+                <div class="inline-flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-lg mb-4">
+                    <i class="fas fa-users text-2xl text-indigo-600"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-indigo-600">0</h3>
+                <p class="text-gray-600 font-medium">Mitra</p>
+            </div>
+        </div>
+
+        <!-- Main Actions -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <% if (user.role === 'waste_producer') { %>
+                <div class="bg-white rounded-xl shadow-sm p-8 text-center hover:shadow-md transition-shadow duration-200">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-6">
+                        <i class="fas fa-plus-circle text-3xl text-green-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Tambah Sampah</h4>
+                    <p class="text-gray-600 mb-6">Daftarkan sampah yang ingin Anda tukarkan</p>
+                    <button class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors duration-200 font-medium">
+                        <i class="fas fa-plus mr-2"></i>Tambah Sampah
+                    </button>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm p-8 text-center hover:shadow-md transition-shadow duration-200">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-6">
+                        <i class="fas fa-search text-3xl text-blue-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Cari Pengelola</h4>
+                    <p class="text-gray-600 mb-6">Temukan pengelola limbah terdekat</p>
+                    <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
+                        <i class="fas fa-search mr-2"></i>Cari Pengelola
+                    </button>
+                </div>
+            <% } else if (user.role === 'waste_manager') { %>
+                <div class="bg-white rounded-xl shadow-sm p-8 text-center hover:shadow-md transition-shadow duration-200">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-6">
+                        <i class="fas fa-search text-3xl text-green-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Cari Sampah</h4>
+                    <p class="text-gray-600 mb-6">Temukan sampah yang tersedia untuk dikelola</p>
+                    <button class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors duration-200 font-medium">
+                        <i class="fas fa-search mr-2"></i>Cari Sampah
+                    </button>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm p-8 text-center hover:shadow-md transition-shadow duration-200">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-6">
+                        <i class="fas fa-calendar text-3xl text-blue-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Jadwal Pengambilan</h4>
+                    <p class="text-gray-600 mb-6">Kelola jadwal pengambilan sampah</p>
+                    <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
+                        <i class="fas fa-calendar mr-2"></i>Lihat Jadwal
+                    </button>
+                </div>
+            <% } else { %>
+                <div class="bg-white rounded-xl shadow-sm p-8 text-center hover:shadow-md transition-shadow duration-200">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-6">
+                        <i class="fas fa-eye text-3xl text-green-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Jelajahi</h4>
+                    <p class="text-gray-600 mb-6">Lihat aktivitas pertukaran sampah</p>
+                    <button class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors duration-200 font-medium">
+                        <i class="fas fa-eye mr-2"></i>Jelajahi
+                    </button>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm p-8 text-center hover:shadow-md transition-shadow duration-200">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-6">
+                        <i class="fas fa-book text-3xl text-blue-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Edukasi</h4>
+                    <p class="text-gray-600 mb-6">Pelajari tentang pengelolaan sampah</p>
+                    <button class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
+                        <i class="fas fa-book mr-2"></i>Belajar
+                    </button>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-sm p-8 text-center hover:shadow-md transition-shadow duration-200">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-6">
+                        <i class="fas fa-users text-3xl text-purple-600"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-3">Komunitas</h4>
+                    <p class="text-gray-600 mb-6">Bergabung dengan komunitas eco-friendly</p>
+                    <button class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors duration-200 font-medium">
+                        <i class="fas fa-users mr-2"></i>Bergabung
+                    </button>
+                </div>
+            <% } %>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="bg-white rounded-xl shadow-sm">
+            <div class="px-6 py-4 border-b border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900 flex items-center">
+                    <i class="fas fa-clock mr-2 text-gray-400"></i>Aktivitas Terbaru
+                </h3>
+            </div>
+            <div class="p-8">
+                <div class="text-center py-8">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4">
+                        <i class="fas fa-inbox text-3xl text-gray-400"></i>
+                    </div>
+                    <h4 class="text-xl font-medium text-gray-900 mb-2">Belum ada aktivitas</h4>
+                    <p class="text-gray-600">Mulai gunakan EcoSwap untuk melihat aktivitas Anda di sini</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Check for token in URL and store it
+const urlParams = new URLSearchParams(window.location.search);
+const token = urlParams.get('token');
+if (token) {
+    localStorage.setItem('token', token);
+    // Remove token from URL for security
+    const newUrl = window.location.pathname + (window.location.search.replace(/[?&]token=[^&]*/, '').replace(/^&/, '?') || '');
+    window.history.replaceState({}, document.title, newUrl);
+}
+
+// Add token to future requests
+if (localStorage.getItem('token')) {
+    // Set up axios interceptor or similar for API requests
+    console.log('Token available for API requests');
+}
+
+// Auto-hide success alerts after 5 seconds
+setTimeout(() => {
+    const successAlert = document.querySelector('[data-success-alert]');
+    if (successAlert) {
+        successAlert.style.transition = 'opacity 0.5s ease-out';
+        successAlert.style.opacity = '0';
+        setTimeout(() => successAlert.remove(), 500);
+    }
+}, 5000);
+</script>

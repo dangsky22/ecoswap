@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <div class="card">
+                <div class="card-body p-5">
+                    <div class="mb-4">
+                        <i class="fas fa-exclamation-triangle text-warning" style="font-size: 5rem;"></i>
+                    </div>
+                    <h1 class="display-1 fw-bold text-primary"><%= error %></h1>
+                    <h3 class="mb-3">Oops! Ada yang salah</h3>
+                    <p class="lead mb-4"><%= message %></p>
+                    <div class="d-flex gap-3 justify-content-center">
+                        <a href="/" class="btn btn-primary">
+                            <i class="fas fa-home me-2"></i>Kembali ke Beranda
+                        </a>
+                        <button onclick="history.back()" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Kembali
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
