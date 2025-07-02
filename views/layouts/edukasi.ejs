@@ -1,0 +1,353 @@
+<!-- Breadcrumb -->
+<nav class="bg-white border-b border-gray-200 px-4 py-3">
+    <div class="max-w-7xl mx-auto">
+        <ol class="flex items-center space-x-2 text-sm text-gray-500">
+            <li>
+                <a href="/dashboard" class="hover:text-green-600 transition-colors duration-200">
+                    <i class="fas fa-home mr-1"></i>Dashboard
+                </a>
+            </li>
+            <li>
+                <i class="fas fa-chevron-right text-gray-400"></i>
+            </li>
+            <li class="text-gray-900 font-medium">
+                <i class="fas fa-book mr-1"></i>Edukasi
+            </li>
+        </ol>
+    </div>
+</nav>
+
+
+<!-- Main Content -->
+<div class="min-h-screen bg-gray-50 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+       
+        <!-- Header Section -->
+        <div class="mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">
+                <i class="fas fa-graduation-cap text-green-600 mr-3"></i>
+                Pusat Edukasi EcoSwap
+            </h1>
+            <p class="text-xl text-gray-600">
+                Pelajari lebih lanjut tentang pengelolaan sampah dan dampak positifnya terhadap lingkungan
+            </p>
+        </div>
+
+
+        <!-- Search and Filter -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+            <div class="flex flex-col lg:flex-row gap-4">
+                <div class="flex-1">
+                    <div class="relative">
+                        <input type="text"
+                               placeholder="Cari artikel, panduan, atau tips..."
+                               class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <select class="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                        <option value="">Semua Kategori</option>
+                        <option value="panduan">Panduan</option>
+                        <option value="tips">Tips & Trik</option>
+                        <option value="artikel">Artikel</option>
+                        <option value="video">Video</option>
+                    </select>
+                    <button class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors duration-200">
+                        <i class="fas fa-filter mr-2"></i>Filter
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Featured Content -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">📺 Konten Unggulan</h2>
+            <div class="bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl p-8 text-white">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Panduan Lengkap Mengelola Sampah Organik</h3>
+                        <p class="text-green-100 mb-6">
+                            Pelajari cara efektif mengelola sampah organik di rumah Anda. Dari komposting hingga biogas,
+                            temukan solusi terbaik untuk mengurangi jejak karbon.
+                        </p>
+                        <div class="flex items-center gap-4 mb-6">
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">🎬 Video Tutorial</span>
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">⏱️ 15 menit</span>
+                            <span class="bg-white/20 px-3 py-1 rounded-full text-sm">⭐ 4.9/5</span>
+                        </div>
+                        <button class="bg-white text-green-600 px-6 py-3 rounded-lg hover:bg-green-50 transition-colors duration-200 font-semibold">
+                            <i class="fas fa-play mr-2"></i>Tonton Sekarang
+                        </button>
+                    </div>
+                    <div class="hidden lg:block">
+                        <div class="bg-white/10 rounded-lg p-8 text-center">
+                            <i class="fas fa-play-circle text-6xl text-white/60 mb-4"></i>
+                            <p class="text-white/80">Video Tutorial Interaktif</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Categories -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">📚 Kategori Pembelajaran</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+               
+                <!-- Panduan Dasar -->
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 p-6">
+                    <div class="text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+                            <i class="fas fa-book-open text-2xl text-blue-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Panduan Dasar</h3>
+                        <p class="text-gray-600 text-sm mb-4">Mulai dari dasar pengelolaan sampah untuk pemula</p>
+                        <span class="inline-block bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-medium">12 Artikel</span>
+                    </div>
+                </div>
+
+
+                <!-- Tips & Trik -->
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 p-6">
+                    <div class="text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-yellow-100 rounded-full mb-4">
+                            <i class="fas fa-lightbulb text-2xl text-yellow-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Tips & Trik</h3>
+                        <p class="text-gray-600 text-sm mb-4">Solusi kreatif dan praktis sehari-hari</p>
+                        <span class="inline-block bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full text-xs font-medium">8 Tips</span>
+                    </div>
+                </div>
+
+
+                <!-- Video Tutorial -->
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 p-6">
+                    <div class="text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
+                            <i class="fas fa-video text-2xl text-red-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Video Tutorial</h3>
+                        <p class="text-gray-600 text-sm mb-4">Pembelajaran visual yang mudah dipahami</p>
+                        <span class="inline-block bg-red-50 text-red-600 px-3 py-1 rounded-full text-xs font-medium">6 Video</span>
+                    </div>
+                </div>
+
+
+                <!-- Artikel Mendalam -->
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 p-6">
+                    <div class="text-center">
+                        <div class="inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full mb-4">
+                            <i class="fas fa-newspaper text-2xl text-purple-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2">Artikel Mendalam</h3>
+                        <p class="text-gray-600 text-sm mb-4">Analisis dan penelitian terkini</p>
+                        <span class="inline-block bg-purple-50 text-purple-600 px-3 py-1 rounded-full text-xs font-medium">15 Artikel</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Recent Content -->
+        <div class="mb-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900">🆕 Konten Terbaru</h2>
+                <a href="#" class="text-green-600 hover:text-green-700 font-medium">
+                    Lihat Semua <i class="fas fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+               
+                <!-- Article 1 -->
+                <article class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-medium">PANDUAN</span>
+                            <span class="text-gray-500 text-sm">2 hari yang lalu</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3 hover:text-green-600 cursor-pointer">
+                            Cara Membuat Kompos dari Sampah Dapur
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Panduan step-by-step membuat kompos berkualitas dari sampah organik dapur Anda. Mudah, murah, dan ramah lingkungan.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="text-sm text-gray-500">
+                                    <i class="fas fa-clock mr-1"></i>5 menit baca
+                                </span>
+                                <span class="text-sm text-gray-500">
+                                    <i class="fas fa-heart mr-1"></i>124 suka
+                                </span>
+                            </div>
+                            <button class="text-green-600 hover:text-green-700 font-medium">
+                                Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- Article 2 -->
+                <article class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-medium">TIPS</span>
+                            <span class="text-gray-500 text-sm">3 hari yang lalu</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3 hover:text-green-600 cursor-pointer">
+                            5 Cara Kreatif Mendaur Ulang Botol Plastik
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Ubah botol plastik bekas menjadi barang berguna dengan 5 ide kreatif ini. Mudah dipraktikkan di rumah!
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="text-sm text-gray-500">
+                                    <i class="fas fa-clock mr-1"></i>3 menit baca
+                                </span>
+                                <span class="text-sm text-gray-500">
+                                    <i class="fas fa-heart mr-1"></i>89 suka
+                                </span>
+                            </div>
+                            <button class="text-green-600 hover:text-green-700 font-medium">
+                                Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- Article 3 -->
+                <article class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-medium">VIDEO</span>
+                            <span class="text-gray-500 text-sm">5 hari yang lalu</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3 hover:text-green-600 cursor-pointer">
+                            Tutorial: Pemilahan Sampah yang Benar
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Video tutorial lengkap cara memilah sampah dengan benar berdasarkan jenisnya. Includes praktik langsung!
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="text-sm text-gray-500">
+                                    <i class="fas fa-play mr-1"></i>8 menit
+                                </span>
+                                <span class="text-sm text-gray-500">
+                                    <i class="fas fa-eye mr-1"></i>456 views
+                                </span>
+                            </div>
+                            <button class="text-green-600 hover:text-green-700 font-medium">
+                                Tonton Video <i class="fas fa-play ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+
+                <!-- Article 4 -->
+                <article class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs font-medium">ARTIKEL</span>
+                            <span class="text-gray-500 text-sm">1 minggu yang lalu</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3 hover:text-green-600 cursor-pointer">
+                            Dampak Positif Ekonomi Sirkular untuk Indonesia
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Analisis mendalam tentang bagaimana ekonomi sirkular dapat meningkatkan perekonomian dan kelestarian lingkungan.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-4">
+                                <span class="text-sm text-gray-500">
+                                    <i class="fas fa-clock mr-1"></i>12 menit baca
+                                </span>
+                                <span class="text-sm text-gray-500">
+                                    <i class="fas fa-heart mr-1"></i>67 suka
+                                </span>
+                            </div>
+                            <button class="text-green-600 hover:text-green-700 font-medium">
+                                Baca Selengkapnya <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+
+        <!-- Quick Tips -->
+        <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-8 mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">💡 Tips Cepat Hari Ini</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+               
+                <div class="bg-white rounded-lg p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                            <span class="text-green-600 font-bold text-sm">1</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-900">Pisahkan Sampah</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Selalu pisahkan sampah organik dan anorganik untuk memudahkan proses daur ulang.
+                    </p>
+                </div>
+
+
+                <div class="bg-white rounded-lg p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                            <span class="text-blue-600 font-bold text-sm">2</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-900">Kurangi Plastik</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Bawa tas belanja sendiri dan hindari penggunaan plastik sekali pakai.
+                    </p>
+                </div>
+
+
+                <div class="bg-white rounded-lg p-6">
+                    <div class="flex items-center mb-3">
+                        <div class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center mr-3">
+                            <span class="text-yellow-600 font-bold text-sm">3</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-900">Kompos Organik</h3>
+                    </div>
+                    <p class="text-gray-600 text-sm">
+                        Ubah sampah dapur menjadi kompos untuk pupuk tanaman di rumah.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Call to Action -->
+        <div class="bg-white rounded-xl shadow-sm p-8 text-center">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                🌱 Mulai Praktikkan Hari Ini!
+            </h2>
+            <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                Sudah belajar banyak? Saatnya mempraktikkan ilmu yang sudah didapat.
+                Mulai dengan langkah kecil untuk dampak besar bagi lingkungan.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/dashboard" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors duration-200 font-semibold">
+                    <i class="fas fa-arrow-left mr-2"></i>Kembali ke Dashboard
+                </a>
+                <button class="border-2 border-green-600 text-green-600 px-6 py-3 rounded-lg hover:bg-green-50 transition-colors duration-200 font-semibold">
+                    <i class="fas fa-share mr-2"></i>Bagikan Pengetahuan
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
